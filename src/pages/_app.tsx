@@ -29,15 +29,20 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 
 function App(props: MyAppProps) {
   const dispatch = useDispatch();
+
   const token =
     typeof window === "undefined" ? "" : localStorage.getItem("token");
-  useEffect(() => {
-    if (!token) return;
+
+  if (token) {
     setupAxios({
       axiosInstance: api,
       baseUrl: API_BASE_URL,
       token,
     });
+  }
+
+  useEffect(() => {
+    if (!token) return;
 
     meApi()
       .then((res) => {

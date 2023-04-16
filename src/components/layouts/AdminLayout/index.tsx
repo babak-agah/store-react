@@ -1,5 +1,6 @@
 import { Box, IconButton, Toolbar, Typography } from "@mui/material";
 import { ReactElement, useState } from "react";
+import AdminDrawerContent from "../AdminDrawerContent";
 
 interface Props {
   children: ReactElement;
@@ -38,7 +39,9 @@ const AdminLayout = ({ children }: Props) => {
               padding: 1,
               overflow: "auto",
             }}
-          ></Box>
+          >
+            <AdminDrawerContent />
+          </Box>
         </Box>
         <Box sx={{ flexGrow: 1 }}>
           <Box

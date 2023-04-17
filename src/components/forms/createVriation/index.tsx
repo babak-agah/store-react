@@ -117,6 +117,7 @@ const CreateVariation = ({ categoryId, created }: Props) => {
                     variant="outlined"
                     label={option}
                     {...getTagProps({ index })}
+                    key={option}
                   />
                 ))
               }
@@ -167,16 +168,15 @@ const CreateVariation = ({ categoryId, created }: Props) => {
           />
         </Grid> */}
 
-        <Grid item xs={12}>
-          <LoadingButton
-            variant={"contained"}
-            fullWidth={true}
-            type={"submit"}
-            loading={loading}
-          >
-            create
-          </LoadingButton>
-        </Grid>
+        <LoadingButton
+          variant={"contained"}
+          fullWidth={true}
+          sx={{ maxWidth: "15w0px" }}
+          type={"submit"}
+          loading={loading}
+        >
+          create
+        </LoadingButton>
       </Grid>
     </Box>
   );

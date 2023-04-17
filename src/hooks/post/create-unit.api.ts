@@ -11,5 +11,5 @@ export const createUnitApi = (form: CreateUnitFormApi) =>
   api.post<Unit>("units", form);
 
 export const createUnitValidation = yup.object().shape({
-  name: textValidation(1, 20),
+  name: yup.string().required("required").min(2).max(20),
 });

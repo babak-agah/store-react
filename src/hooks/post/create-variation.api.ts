@@ -16,8 +16,8 @@ export const createVariationApi = (
 ) => api.post<Variation>(`variations/${productCategoryId}`, form);
 
 export const createVariationValidation = yup.object().shape({
-  name: textValidation(2, 20),
-  model: yup.string(),
+  name: textValidation({ min: 2, max: 20 }),
+  model: textValidation({ required: true }),
   options: yup.array(),
   units: yup.array(),
 });

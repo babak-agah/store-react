@@ -3,23 +3,22 @@ import { Box, Grid, TextField } from "@mui/material";
 import ImageUploader from "@src/components/core/ImageUploader";
 import {
   CreateProductCategoryForm,
-  createProductCategoryApi,
   createProductCategoryValidation,
 } from "@src/hooks/post/create-product-category.api";
+import { updateProductCategoryApi } from "@src/hooks/post/update-product-category.api";
 import { ProductCategory } from "@src/types/product-category";
 import { useFormik } from "formik";
 import { useState } from "react";
 
 interface Props {
-  parentId?: string;
-  created: (productCategory: ProductCategory) => void;
+  category: ProductCategory;
+
+  updated: (productCategory: ProductCategory) => void;
 }
 
-const CreateProductCategory = ({ parentId, created }: Props) => {
+const UpdateProductCategory = ({ category, updated }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const initialValues = {
-    name: "",
-  };
+
   const {
     handleBlur,
     handleChange,
@@ -29,14 +28,14 @@ const CreateProductCategory = ({ parentId, created }: Props) => {
     errors,
     touched,
   } = useFormik<CreateProductCategoryForm>({
-    initialValues,
+    initialValues: { name: category.name, icon: category.icon },
     validationSchema: createProductCategoryValidation,
     onSubmit: (values, helper) => {
       setLoading(true);
-      createProductCategoryApi({ ...values, parent: parentId })
+      updateProductCategoryApi(category._id, { ...values })
         .then((res) => {
-          helper.resetForm({ values: initialValues });
-          created(res.data);
+          helper.resetForm();
+          updated(res.data);
         })
         .catch(console.log)
         .finally(() => setLoading(false));
@@ -47,6 +46,7 @@ const CreateProductCategory = ({ parentId, created }: Props) => {
       <Grid container gap={2}>
         <Grid item xs={12}>
           <TextField
+            value={values.name}
             fullWidth
             name={"name"}
             type={"text"}
@@ -72,7 +72,7 @@ const CreateProductCategory = ({ parentId, created }: Props) => {
             type={"submit"}
             loading={loading}
           >
-            create
+            update
           </LoadingButton>
         </Grid>
       </Grid>
@@ -80,4 +80,4 @@ const CreateProductCategory = ({ parentId, created }: Props) => {
   );
 };
 
-export default CreateProductCategory;
+export default UpdateProductCategory;

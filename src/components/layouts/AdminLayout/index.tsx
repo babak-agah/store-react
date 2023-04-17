@@ -1,6 +1,7 @@
 import { Box, IconButton, Toolbar, Typography } from "@mui/material";
 import { ReactElement, useState } from "react";
 import AdminDrawerContent from "../AdminDrawerContent";
+import { HiArrowLeft } from "react-icons/hi2";
 
 interface Props {
   children: ReactElement;
@@ -12,7 +13,6 @@ const MINI_WIDTH = 90;
 
 const AdminLayout = ({ children }: Props) => {
   const [open, setOpen] = useState<boolean>(true);
-  const [isMini, setIsMini] = useState<boolean>(false);
 
   return (
     <>
@@ -51,6 +51,7 @@ const AdminLayout = ({ children }: Props) => {
               top: 0,
               height: "80px",
               padding: "10px",
+              zIndex: 10,
             }}
           >
             <Toolbar
@@ -67,14 +68,15 @@ const AdminLayout = ({ children }: Props) => {
                 edge="start"
                 sx={{
                   marginRight: 5,
-                  // ...(open && { display: "none" }),
+                  transition: "0.3s",
+                  transform: open ? "" : "rotate(180deg)",
                 }}
               >
-                M
+                <HiArrowLeft />
               </IconButton>
 
               <Typography variant="h6" noWrap component="div">
-                Mini variant drawer
+                store
               </Typography>
             </Toolbar>
           </Box>

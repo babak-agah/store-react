@@ -20,6 +20,6 @@ export const signinApi = (form: SigninFormApi) =>
   api.post<SigninResponseApi>("auth/signin", form);
 
 export const signinFormValidation = yup.object().shape({
-  username: textValidation(3, 20),
-  password: textValidation(6, 20),
+  username: textValidation({ min: 3, max: 20 }),
+  password: textValidation({ min: 6, max: 20 }),
 });

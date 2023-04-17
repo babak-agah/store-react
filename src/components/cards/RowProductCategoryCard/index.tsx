@@ -1,4 +1,5 @@
 import { Box, Card } from "@mui/material";
+import Img from "@src/components/core/Img";
 import { ProductCategory } from "@src/types/product-category";
 import Link from "next/link";
 {
@@ -9,11 +10,18 @@ interface Props {
   data: ProductCategory;
 }
 
-const AdminProductCategoryCard = ({ data }: Props) => {
-  const { _id, name, parent, ancestors } = data;
+const RowProductCategoryCard = ({ data }: Props) => {
+  const { _id, name, parent, ancestors, icon } = data;
   return (
-    <Card sx={{ p: 1, mt: 2, display: "flex", gap: 2 }}>
+    <Card sx={{ p: 1, mt: 2, display: "flex", gap: 2, alignItems: "center" }}>
       {/* <Box>{_id}</Box> */}
+      <Box>
+        <Img
+          sx={{ width: "50px", height: "50px", borderRadius: "10px" }}
+          sxImage={{ objectFit: "cover" }}
+          src={icon}
+        />
+      </Box>
       <Box>{name}</Box>
       <Box>{parent?.name}</Box>
       <Box>
@@ -28,4 +36,4 @@ const AdminProductCategoryCard = ({ data }: Props) => {
   );
 };
 
-export default AdminProductCategoryCard;
+export default RowProductCategoryCard;

@@ -6,4 +6,5 @@ export interface ProductCategory {
   parent?: ProductCategory;
   ancestors: ProductCategory[];
   variations: Variation[];
+  icon?: string;
 }

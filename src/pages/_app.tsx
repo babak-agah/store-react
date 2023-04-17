@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
-import { ReactElement, ReactNode, useEffect } from "react";
+import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { CacheProvider, EmotionCache, ThemeProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import "../styles/globals.css";
@@ -15,6 +15,11 @@ import { HOST_API_BASE_URL } from "@src/constants/host-api-base-url";
 import { meApi } from "@src/hooks/get/me.api";
 import { useDispatch } from "react-redux";
 import { updateUser } from "@src/store/slices/profile";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -28,6 +33,7 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 };
 
 function App(props: MyAppProps) {
+  const [queryClient] = useState(() => new QueryClient());
   const dispatch = useDispatch();
 
   const token =
@@ -61,16 +67,22 @@ function App(props: MyAppProps) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return getLayout(
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <CacheProvider value={emotionCache}>
+          <Head>
+            <meta
+              name="viewport"
+              content="initial-scale=1, width=device-width"
+            />
+          </Head>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </CacheProvider>
+      </Hydrate>
+    </QueryClientProvider>
   );
 }
 

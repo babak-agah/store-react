@@ -5,7 +5,7 @@ interface Props {
   filter: { [key: string]: any };
 }
 
-export const getProductCategoriesApi = ({ filter }: Props) =>
+export const getProductCategoriesLeavesApi = ({ filter }: Props) =>
   api.get<ProductCategory[]>(
-    `product-categories?filter=${JSON.stringify(filter)}`
+    `product-categories/leaves?filter=${JSON.stringify(filter)}`
   );

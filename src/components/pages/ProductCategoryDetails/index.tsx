@@ -11,7 +11,7 @@ import ProductCategoryDetailsCard from "@src/components/cards/ProductCategoryDet
 import CreateProductCategory from "@src/components/forms/CreateProductCategory";
 import CreateVariation from "@src/components/forms/CreateVriation";
 import UpdateProductCategory from "@src/components/forms/UpdateProductCategory";
-import { getProductCategories } from "@src/hooks/get/get-product-categories.api";
+import { getProductCategoriesApi } from "@src/hooks/get/get-product-categories.api";
 
 import { ProductCategory } from "@src/types/product-category";
 
@@ -38,7 +38,7 @@ const ProductCategoryDetails = () => {
         ? { parent: { $exists: false } }
         : { parent: categoryId };
 
-    getProductCategories({ filter }).then((res) => {
+    getProductCategoriesApi({ filter }).then((res) => {
       setCategories(res.data);
     });
   }, [categoryId]);

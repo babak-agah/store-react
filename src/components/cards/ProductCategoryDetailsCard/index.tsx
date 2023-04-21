@@ -16,7 +16,7 @@ import Link from "next/link";
 import { CiEdit } from "react-icons/ci";
 import UpdateProductCategory from "@src/components/forms/UpdateProductCategory";
 import { useEffect, useState } from "react";
-import { getProductCategoryById } from "@src/hooks/get/get-product-category-by-id.api";
+import { getProductCategoryByIdApi } from "@src/hooks/get/get-product-category-by-id.api";
 import CreateVariation from "@src/components/forms/CreateVriation";
 
 interface Props {
@@ -33,7 +33,9 @@ const ROOT_CATEGORY: ProductCategory = {
 
 const ProductCategoryDetailsCard = ({ categoryId }: Props) => {
   const [category, setCategory] = useState<ProductCategory>(ROOT_CATEGORY);
-  const [open, setOpen] = useState<"ADD_VARIATION" | "UPDATE_CATEGORY">();
+  const [open, setOpen] = useState<
+    "ADD_VARIATION" | "UPDATE_CATEGORY" | "ADD_PRODUCT"
+  >();
 
   const { icon, name, variations, _id, parent, ancestors } = category;
 
@@ -44,7 +46,7 @@ const ProductCategoryDetailsCard = ({ categoryId }: Props) => {
     if (isRoot) {
       setCategory(ROOT_CATEGORY);
     } else {
-      getProductCategoryById(categoryId).then((res) => {
+      getProductCategoryByIdApi(categoryId).then((res) => {
         setCategory(res.data);
       });
     }

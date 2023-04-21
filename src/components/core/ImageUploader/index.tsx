@@ -41,6 +41,7 @@ interface Props {
   prefix?: string;
   src?: string;
   setSrc: (src: string) => void;
+  onLoading?: (v: boolean) => void;
 }
 
 const ImageUploader = ({
@@ -48,18 +49,23 @@ const ImageUploader = ({
   src,
   sx,
   setSrc,
+  onLoading,
 }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return;
     if (loading) return;
     setLoading(true);
+    onLoading && onLoading(true);
     uploadImageApi(e.target.files[0])
       .then((res) => {
         setSrc(res.data.url);
       })
       .catch(console.log)
-      .finally(() => setLoading(false));
+      .finally(() => {
+        onLoading && onLoading(false);
+        setLoading(false);
+      });
   };
   return (
     <Root sx={sx}>

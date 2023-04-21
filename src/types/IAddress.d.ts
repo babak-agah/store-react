@@ -1,4 +1,4 @@
-export interface Address {
+export interface IAddress {
   phoneNumber: string[];
   mobileNumber: string[];
   postCode: string;

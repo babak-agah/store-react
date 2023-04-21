@@ -22,7 +22,6 @@ const VariaitionCard = ({ data }: Props) => {
           />
         ))}
       </Stack>
-
       <Box>
         <Stack direction="row" spacing={1}>
           {units.map((u, index) => (

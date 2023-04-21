@@ -1,8 +1,35 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import AdminLayout from "@src/components/layouts/AdminLayout";
+import { getProductsApi } from "@src/hooks/get/get-products.api";
+import { Box } from "@mui/material";
+import { IProduct } from "@src/types/IProduct";
+import Link from "next/link";
 
 function ProductsPage() {
-  return <main className="p-4">this is admin products</main>;
+  const [products, setProducts] = useState<IProduct[]>([]);
+  useEffect(() => {
+    // getProductCategoriesLeavesApi({ filter: {} })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(console.log);
+    getProductsApi({ count: 100, page: 1 })
+      .then((res) => {
+        setProducts(res.data.items);
+      })
+      .catch(console.log);
+  }, []);
+  return (
+    <Box>
+      {products.map((product) => (
+        <Box key={product._id}>
+          <Link href={`/admin/products/details/${product._id}`}>
+            {product.name}
+          </Link>
+        </Box>
+      ))}
+    </Box>
+  );
 }
 
 ProductsPage.getLayout = function getLayout(page: ReactElement) {

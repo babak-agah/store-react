@@ -1,4 +1,3 @@
-import { textValidation } from "@src/validations/text.validation";
 import * as yup from "yup";
 import { api } from "@src/lib/axios";
 import { Unit } from "@src/types/unit";

@@ -1,6 +1,6 @@
-import { getProductCategories } from "@src/hooks/get/get-product-categories.api";
+import { getProductCategoriesApi } from "@src/hooks/get/get-product-categories.api";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+
 
 interface Props {
   parentId: string;
@@ -14,7 +14,7 @@ const QueryTest = ({ parentId, isRoot }: Props) => {
       const filter = isRoot
         ? { parent: { $exists: false } }
         : { parent: parentId };
-      return getProductCategories({ filter }).then((res) => res.data);
+      return getProductCategoriesApi({ filter }).then((res) => res.data);
     },
   });
   return <div>QueryTest</div>;

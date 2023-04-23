@@ -15,22 +15,21 @@ import { getProductCategoryByIdApi } from "@src/hooks/get/get-product-category-b
 import { IProductCategory } from "@src/types/IProduct-category";
 
 interface Props {
-  categoryId: string;
+  category: IProductCategory;
   defaultValues?: ICreateProductApi;
   method?: "CREATE" | "UPDATE";
   productId?: string;
   created: (product: any) => void;
 }
 
-const CreateProductForm = ({
-  categoryId,
+const CreateAndUpdateProductForm = ({
+  category,
   defaultValues,
   method = "CREATE",
   productId,
   created,
 }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [category, setCategory] = useState<IProductCategory>();
 
   const initialValues: ICreateProductApi = defaultValues || {
     name: "",
@@ -45,7 +44,7 @@ const CreateProductForm = ({
   ) => {
     setLoading(true);
     if (method === "CREATE") {
-      createProductApi(categoryId, values)
+      createProductApi(category._id, values)
         .then((res) => {
           helper.resetForm();
           created(res.data);
@@ -77,14 +76,6 @@ const CreateProductForm = ({
     validationSchema: createProductShema,
     onSubmit,
   });
-
-  useEffect(() => {
-    getProductCategoryByIdApi(categoryId)
-      .then((res) => {
-        setCategory(res.data);
-      })
-      .catch(console.log);
-  }, [categoryId]);
 
   return (
     <Box component={"form"} onSubmit={handleSubmit}>
@@ -155,4 +146,4 @@ const CreateProductForm = ({
   );
 };
 
-export default CreateProductForm;
+export default CreateAndUpdateProductForm;

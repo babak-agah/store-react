@@ -1,4 +1,4 @@
-import CreateProductForm from "@src/components/forms/CreateProduct";
+import CreateProductForm from "@src/components/forms/CreateAndUpdateProduct";
 import AdminLayout from "@src/components/layouts/AdminLayout";
 import { IProduct } from "@src/types/IProduct";
 import { useRouter } from "next/router";

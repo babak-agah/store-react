@@ -25,11 +25,3 @@ export const createProductShema = yup.object().shape({
   images: yup.array(yup.string()),
   configurations: yup.array(),
 });
-
-// name: string;
-
-// description: string;
-
-// price: number;
-
-// images: string;

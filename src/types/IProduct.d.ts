@@ -1,4 +1,5 @@
 import { IConfiguration } from "./IConfiguration";
+import { IProductItem } from "./IProduct-item";
 
 export interface IProduct {
   _id: string;
@@ -8,4 +9,5 @@ export interface IProduct {
   price?: number;
   images?: string[];
   configurations: IConfiguration[];
+  productItems: IProductItem[];
 }

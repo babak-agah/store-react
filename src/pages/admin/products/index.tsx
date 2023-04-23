@@ -8,11 +8,6 @@ import Link from "next/link";
 function ProductsPage() {
   const [products, setProducts] = useState<IProduct[]>([]);
   useEffect(() => {
-    // getProductCategoriesLeavesApi({ filter: {} })
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   })
-    //   .catch(console.log);
     getProductsApi({ count: 100, page: 1 })
       .then((res) => {
         setProducts(res.data.items);
@@ -33,11 +28,7 @@ function ProductsPage() {
 }
 
 ProductsPage.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <>
-      <AdminLayout>{page}</AdminLayout>
-    </>
-  );
+  return <AdminLayout>{page}</AdminLayout>;
 };
 
 export default ProductsPage;

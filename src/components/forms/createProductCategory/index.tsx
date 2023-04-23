@@ -6,13 +6,13 @@ import {
   createProductCategoryApi,
   createProductCategoryValidation,
 } from "@src/hooks/post/create-product-category.api";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 import { useFormik } from "formik";
 import { useState } from "react";
 
 interface Props {
   parentId?: string;
-  created: (productCategory: ProductCategory) => void;
+  created: (productCategory: IProductCategory) => void;
 }
 
 const CreateProductCategory = ({ parentId, created }: Props) => {

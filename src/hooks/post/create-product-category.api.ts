@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { api } from "@src/lib/axios";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 
 export interface CreateProductCategoryForm {
   name: string;
@@ -9,7 +9,7 @@ export interface CreateProductCategoryForm {
 }
 
 export const createProductCategoryApi = (form: CreateProductCategoryForm) =>
-  api.post<ProductCategory>("product-categories", form);
+  api.post<IProductCategory>("product-categories", form);
 
 // v.min(3);
 

@@ -1,4 +1,5 @@
 import { api } from "@src/lib/axios";
+import { IConfiguration } from "@src/types/IConfiguration";
 import { IProduct } from "@src/types/IProduct";
 import * as yup from "yup";
 
@@ -7,6 +8,7 @@ export interface ICreateProductApi {
   description: string;
   price?: string;
   images: string[];
+  configurations: IConfiguration[];
 }
 
 export const createProductApi = (

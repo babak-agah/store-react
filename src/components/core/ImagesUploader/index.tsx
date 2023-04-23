@@ -62,6 +62,7 @@ const ImagesUploader = ({
     <Stack direction="row" spacing={1}>
       {images.map((image, index) => (
         <ImageUploader
+          key={index}
           onLoading={(loading) => loadingHandler(loading, index)}
           src={image.src}
           setSrc={(src) => {

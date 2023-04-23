@@ -1,13 +1,13 @@
 import { Box, Card } from "@mui/material";
 import Img from "@src/components/core/Img";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 import Link from "next/link";
 {
   /* <Link href={`/admin/product-categories/${category._id}`}></Link> */
 }
 
 interface Props {
-  data: ProductCategory;
+  data: IProductCategory;
 }
 
 const RowProductCategoryCard = ({ data }: Props) => {

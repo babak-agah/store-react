@@ -13,7 +13,7 @@ import CreateVariation from "@src/components/forms/CreateVriation";
 import UpdateProductCategory from "@src/components/forms/UpdateProductCategory";
 import { getProductCategoriesApi } from "@src/hooks/get/get-product-categories.api";
 
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ const ProductCategoryDetails = () => {
 
   const [open, setOpen] = useState<OpenType>();
 
-  const [categoreis, setCategories] = useState<ProductCategory[]>([]);
+  const [categoreis, setCategories] = useState<IProductCategory[]>([]);
 
   useEffect(() => {
     if (!categoryId) return;

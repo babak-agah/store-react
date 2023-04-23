@@ -1,11 +1,12 @@
 import AdminLayout from "@src/components/layouts/AdminLayout";
+import ProductDetails from "@src/components/pages/ProductDetails";
 import { ReactElement } from "react";
 
-const ProductDetailsAdmin = () => {
-  return <div>ProductDetailsAdmin</div>;
+const ProductDetailsPage = () => {
+  return <ProductDetails />;
 };
 
-ProductDetailsAdmin.getLayout = function getLayout(page: ReactElement) {
+ProductDetailsPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
       <AdminLayout>{page}</AdminLayout>
@@ -13,4 +14,4 @@ ProductDetailsAdmin.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export default ProductDetailsAdmin;
+export default ProductDetailsPage;

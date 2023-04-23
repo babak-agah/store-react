@@ -1,11 +1,11 @@
 import Link from "next/link";
 import RowProductCategoryCard from "../cards/RowProductCategoryCard";
 import { CircularProgress } from "@mui/material";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 
 interface Props {
   loading: boolean;
-  categories: ProductCategory[];
+  categories: IProductCategory[];
 }
 
 const ProductCategories = ({ loading, categories }: Props) => {

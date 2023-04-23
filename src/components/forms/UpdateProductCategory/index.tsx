@@ -6,14 +6,14 @@ import {
   createProductCategoryValidation,
 } from "@src/hooks/post/create-product-category.api";
 import { updateProductCategoryApi } from "@src/hooks/post/update-product-category.api";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 import { useFormik } from "formik";
 import { useState } from "react";
 
 interface Props {
-  category: ProductCategory;
+  category: IProductCategory;
 
-  updated: (productCategory: ProductCategory) => void;
+  updated: (productCategory: IProductCategory) => void;
 }
 
 const UpdateProductCategory = ({ category, updated }: Props) => {

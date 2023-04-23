@@ -1,9 +1,9 @@
 import { Box, Chip, Grid, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-import { Variation } from "@src/types/variation";
+import { IVariation } from "@src/types/Ivariation";
 
 interface Props {
-  data: Variation;
+  data: IVariation;
 }
 
 const VariaitionCard = ({ data }: Props) => {

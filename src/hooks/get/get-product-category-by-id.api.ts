@@ -1,5 +1,5 @@
 import { api } from "@src/lib/axios";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 
 export const getProductCategoryByIdApi = (id: string) =>
-  api.get<ProductCategory>(`product-categories/${id}`);
+  api.get<IProductCategory>(`product-categories/${id}`);

@@ -13,7 +13,7 @@ const MINI_WIDTH = 90;
 
 const AdminLayout = ({ children }: Props) => {
   const [open, setOpen] = useState<boolean>(true);
-
+  const width = open ? DEFAULT_WIDTH : "0";
   return (
     <>
       <Box sx={{ display: "flex", gap: open ? "2px" : "0", transition: ".3s" }}>
@@ -21,7 +21,8 @@ const AdminLayout = ({ children }: Props) => {
           sx={{
             transition: ".3s",
             height: "100vh",
-            width: open ? DEFAULT_WIDTH : "0",
+            width: width,
+            minWidth: width,
             position: "sticky",
             top: 0,
             display: "flex",

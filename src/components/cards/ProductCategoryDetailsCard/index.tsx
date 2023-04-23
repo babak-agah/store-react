@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import Img from "@src/components/core/Img";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 import VariaitionCard from "../VariaitionCard";
 import Link from "next/link";
 import { CiEdit } from "react-icons/ci";
@@ -23,7 +23,7 @@ interface Props {
   categoryId: string;
 }
 
-const ROOT_CATEGORY: ProductCategory = {
+const ROOT_CATEGORY: IProductCategory = {
   name: "root",
   _id: "root",
   ancestors: [],
@@ -32,7 +32,7 @@ const ROOT_CATEGORY: ProductCategory = {
 };
 
 const ProductCategoryDetailsCard = ({ categoryId }: Props) => {
-  const [category, setCategory] = useState<ProductCategory>(ROOT_CATEGORY);
+  const [category, setCategory] = useState<IProductCategory>(ROOT_CATEGORY);
   const [open, setOpen] = useState<
     "ADD_VARIATION" | "UPDATE_CATEGORY" | "ADD_PRODUCT"
   >();

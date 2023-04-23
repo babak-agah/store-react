@@ -18,7 +18,7 @@ import {
   createVariationValidation,
 } from "@src/hooks/post/create-variation.api";
 
-import { Variation } from "@src/types/variation";
+import { Variation } from "@src/types/Ivariation";
 import { useFormik } from "formik";
 import { useState } from "react";
 

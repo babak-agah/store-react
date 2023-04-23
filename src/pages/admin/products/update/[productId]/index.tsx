@@ -4,13 +4,13 @@ import AdminLayout from "@src/components/layouts/AdminLayout";
 import { getProductByIdApi } from "@src/hooks/get/get-product-by-id.api";
 import { getProductCategoryByIdApi } from "@src/hooks/get/get-product-category-by-id.api";
 import { IProduct } from "@src/types/IProduct";
-import { ProductCategory } from "@src/types/product-category";
+import { IProductCategory } from "@src/types/IProduct-category";
 import { useRouter } from "next/router";
 import { ReactElement, useEffect, useState } from "react";
 
 const UpdateProductPage = () => {
   const [product, setProduct] = useState<IProduct>();
-  const [category, setCategory] = useState<ProductCategory>();
+  const [category, setCategory] = useState<IProductCategory>();
   const router = useRouter();
   const productId = router.query.productId as string;
 

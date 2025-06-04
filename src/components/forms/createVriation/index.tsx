@@ -10,7 +10,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { VARIATION_MODELS } from "@src/constants/variaition-models";
+import { VARIATION_MODELS } from "@src/constants/variation-models";
 
 import {
   CreateVariationForm,

@@ -1,22 +1,26 @@
 import { Box, InputLabel } from "@mui/material";
 import { IVariation } from "@src/types/Ivariation";
 import Selector from "../FormGenerator/Selector";
-import { IConfiguration } from "@src/types/IConfiguration";
 
-interface Props {
-  variaitions: IVariation[];
-  values: IConfiguration[];
-  onChange: (values: IConfiguration[]) => void;
+export interface IConfigGenerator {
+  values: any[];
+  variationId: string;
 }
 
-const ConfigGenerator = ({ values, variaitions, onChange }: Props) => {
-  const valuesHandler = (variaitionId: string) => {
-    const find = values.find((v) => v.variationId === variaitionId);
+interface Props {
+  variations: IVariation[];
+  values: IConfigGenerator[];
+  onChange: (values: IConfigGenerator[]) => void;
+}
+
+const ConfigGenerator = ({ values, variations, onChange }: Props) => {
+  const valuesHandler = (variationId: string) => {
+    const find = values.find((v) => v.variationId === variationId);
     return find?.values || [];
   };
 
   const changeHandler = (variationId: string, variationValues: any[]) => {
-    const newValues: IConfiguration[] = [...values];
+    const newValues: IConfigGenerator[] = [...values];
     const index = newValues.findIndex((v) => v.variationId === variationId);
     if (index !== -1) {
       newValues[index].values = variationValues;
@@ -28,7 +32,7 @@ const ConfigGenerator = ({ values, variaitions, onChange }: Props) => {
 
   return (
     <Box>
-      {variaitions.map((v) => (
+      {variations.map((v) => (
         <Box key={v._id}>
           {v.model === "select" ? (
             <>

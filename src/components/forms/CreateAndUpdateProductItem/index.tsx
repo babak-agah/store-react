@@ -8,6 +8,7 @@ import ConfigGenerator from "../ConfigGenerator";
 import { IProductCategory } from "@src/types/IProduct-category";
 import { IProductItem } from "@src/types/IProduct-item";
 import {
+  ICreateProductItemForm,
   createProductItemApi,
   createProductItemShema,
 } from "@src/hooks/post/create-product-item.api";
@@ -16,7 +17,7 @@ import { IProduct } from "@src/types/IProduct";
 
 interface Props {
   category: IProductCategory;
-  defaultValues?: IProductItem;
+  defaultValues?: ICreateProductItemForm;
   method?: "CREATE" | "UPDATE";
   productId: string;
   created?: (product: IProduct) => void;
@@ -33,7 +34,7 @@ const CreateAndUpdateProductItemFrom = ({
 }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
 
-  const initialValues: IProductItem = defaultValues || {
+  const initialValues: ICreateProductItemForm = defaultValues || {
     name: "",
     sku: "",
     price: 1,
@@ -44,8 +45,8 @@ const CreateAndUpdateProductItemFrom = ({
   };
 
   const onSubmit = async (
-    values: IProductItem,
-    helper: FormikHelpers<IProductItem>
+    values: ICreateProductItemForm,
+    helper: FormikHelpers<ICreateProductItemForm>
   ) => {
     try {
       setLoading(true);
@@ -73,7 +74,7 @@ const CreateAndUpdateProductItemFrom = ({
     handleChange,
     handleSubmit,
     setFieldValue,
-  } = useFormik<IProductItem>({
+  } = useFormik<ICreateProductItemForm>({
     initialValues,
     validationSchema: createProductItemShema,
     onSubmit,
@@ -144,7 +145,6 @@ const CreateAndUpdateProductItemFrom = ({
           <ImagesUploader
             value={values.images}
             onChange={(images) => {
-              console.log(images);
               setFieldValue("images", images);
             }}
             onLoading={setLoading}
@@ -154,7 +154,7 @@ const CreateAndUpdateProductItemFrom = ({
           <Grid item xs={12}>
             <ConfigGenerator
               values={values.configurations || []}
-              variaitions={category.variations}
+              variations={category.variations}
               onChange={(v) => setFieldValue("configurations", v)}
             />
           </Grid>

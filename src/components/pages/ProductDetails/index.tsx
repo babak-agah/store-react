@@ -1,4 +1,5 @@
-import { Box, Button, Divider } from "@mui/material";
+import { Box, Divider } from "@mui/material";
+import ProductItemRow from "@src/components/cards/ProductItemRow";
 import CreateAndUpdateProductForm from "@src/components/forms/CreateAndUpdateProduct";
 import CreateAndUpdateProductItemFrom from "@src/components/forms/CreateAndUpdateProductItem";
 
@@ -53,13 +54,7 @@ const ProductDetails = () => {
           <Box my={2}>
             {product.productItems.map((productItem) => (
               <Box my={2} key={productItem.sku}>
-                <CreateAndUpdateProductItemFrom
-                  method="UPDATE"
-                  defaultValues={productItem}
-                  productId={product._id}
-                  category={category}
-                  updated={() => {}}
-                />
+                <ProductItemRow data={productItem} />
               </Box>
             ))}
             <Divider />
@@ -77,6 +72,13 @@ const ProductDetails = () => {
           </Box>
         </Box>
       ) : null}
+      {/* <CreateAndUpdateProductItemFrom
+                  method="UPDATE"
+                  defaultValues={productItem}
+                  productId={product._id}
+                  category={category}
+                  updated={() => {}}
+                /> */}
     </>
   );
 };

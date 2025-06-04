@@ -1,3 +1,4 @@
+import { IConfiguration } from "./IConfiguration";
 import { IProductItemStateses } from "./IProductItemStatuses";
 
 export interface IProductItem {

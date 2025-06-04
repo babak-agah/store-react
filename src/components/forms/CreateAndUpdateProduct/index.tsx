@@ -123,7 +123,7 @@ const CreateAndUpdateProductForm = ({
           <Grid item xs={12}>
             <ConfigGenerator
               values={values.configurations || []}
-              variaitions={category.variations}
+              variations={category.variations}
               onChange={(v) => setFieldValue("configurations", v)}
             />
           </Grid>

@@ -1,4 +1,8 @@
+import { VariationModelType } from "./Ivariation";
+
 export interface IConfiguration {
-  variationId: string;
   values: any[];
+  variationId: string;
+  name: string;
+  model: VariationModelType;
 }

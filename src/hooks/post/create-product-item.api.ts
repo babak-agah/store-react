@@ -3,7 +3,15 @@ import { IProduct } from "@src/types/IProduct";
 import { IProductItem } from "@src/types/IProduct-item";
 import * as yup from "yup";
 
-export const createProductItemApi = (productId: string, form: IProductItem) => {
+export interface ICreateProductItemForm
+  extends Omit<IProductItem, "configurations"> {
+  configurations: { variationId: string; values: any[] }[];
+}
+
+export const createProductItemApi = (
+  productId: string,
+  form: ICreateProductItemForm
+) => {
   return api.post<IProduct>(`/products/product-items/${productId}`, form);
 };
 

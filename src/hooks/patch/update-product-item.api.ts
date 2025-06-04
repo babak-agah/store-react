@@ -1,9 +1,12 @@
 import { api } from "@src/lib/axios";
 import { IProduct } from "@src/types/IProduct";
-import { IProductItem } from "@src/types/IProduct-item";
 import * as yup from "yup";
+import { ICreateProductItemForm } from "../post/create-product-item.api";
 
-export const updateProductItemApi = (productId: string, form: IProductItem) => {
+export const updateProductItemApi = (
+  productId: string,
+  form: ICreateProductItemForm
+) => {
   return api.patch<IProduct>(`/products/product-items/${productId}`, form);
 };
 

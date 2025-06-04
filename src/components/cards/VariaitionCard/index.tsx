@@ -6,7 +6,7 @@ interface Props {
   data: IVariation;
 }
 
-const VariaitionCard = ({ data }: Props) => {
+const VariationCard = ({ data }: Props) => {
   const { _id, name, options, units, model } = data;
   return (
     <Grid item key={_id}>
@@ -38,4 +38,4 @@ const VariaitionCard = ({ data }: Props) => {
   );
 };
 
-export default VariaitionCard;
+export default VariationCard;

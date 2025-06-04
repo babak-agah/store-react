@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import Img from "@src/components/core/Img";
 import { IProductCategory } from "@src/types/IProduct-category";
-import VariaitionCard from "../VariaitionCard";
+import VariationCard from "../VariationCard";
 import Link from "next/link";
 import { CiEdit } from "react-icons/ci";
 import UpdateProductCategory from "@src/components/forms/UpdateProductCategory";
@@ -110,7 +110,7 @@ const ProductCategoryDetailsCard = ({ categoryId }: Props) => {
           )}
           {variations.map((v) => (
             <Box key={v._id} mt={2}>
-              <VariaitionCard data={v} />
+              <VariationCard data={v} />
             </Box>
           ))}
         </Box>
